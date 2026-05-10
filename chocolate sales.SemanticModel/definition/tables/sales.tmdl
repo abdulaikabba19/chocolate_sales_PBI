@@ -1,0 +1,189 @@
+table sales
+	lineageTag: cc61eff4-3b97-4cc5-b9cd-465de9468c21
+
+	column order_id
+		dataType: string
+		lineageTag: 3b6e549a-620b-4ef1-974d-aa5ae39d1a8e
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5265efd4-724e-4fdc-adbf-c89b3396da3f
+		summarizeBy: none
+		sourceColumn: order_date
+
+		variation Variation
+			isDefault
+			relationship: c70d3b3a-61c0-4c76-89e6-c69d6343b15f
+			defaultHierarchy: LocalDateTable_e3b95213-053d-4f60-998f-4a9da4802500.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column product_id
+		dataType: string
+		lineageTag: 172f3978-9940-46a8-bc1c-898bb64ce13d
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_id
+		dataType: string
+		lineageTag: 9614c505-4ad4-4592-a9bf-5742c7848bca
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: 3539254f-56ef-4023-8f48-a770dc0e5d0b
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: b55b8c04-fdc9-4d04-8397-6301d4900e64
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit_price
+		dataType: double
+		lineageTag: 156c1b8d-8fc4-49a6-8449-69af9587f6f3
+		summarizeBy: sum
+		sourceColumn: unit_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_price
+		dataType: double
+		lineageTag: f60433dc-e2b7-4f17-8de1-95506c8b750b
+		summarizeBy: sum
+		sourceColumn: total_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column discount
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 34c0caa5-ac96-466b-9a7b-055068f04231
+		summarizeBy: sum
+		sourceColumn: discount
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue
+		dataType: double
+		lineageTag: 8157b280-ba8a-4bef-a032-b3bb7bb9a35d
+		summarizeBy: sum
+		sourceColumn: revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column production_cost
+		dataType: double
+		lineageTag: 3273c903-4080-4c55-9861-87fd2370cc8f
+		summarizeBy: sum
+		sourceColumn: production_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column profit
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 6ec19372-55b4-4b1f-8722-1abc7252c5b0
+		summarizeBy: sum
+		sourceColumn: profit
+
+		annotation SummarizationSetBy = Automatic
+
+	column gender
+		dataType: string
+		lineageTag: 1a609450-7f77-4d51-b0a9-f3571014591b
+		summarizeBy: none
+		sourceColumn: gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column loyalty_membership
+		dataType: int64
+		formatString: 0
+		lineageTag: b07fd54e-240d-4ba9-bddc-20240e5b1fa1
+		summarizeBy: sum
+		sourceColumn: loyalty_membership
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: bb25c82f-ee52-4cb9-95cb-ab51fe25a970
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_type
+		dataType: string
+		lineageTag: 840357b8-13b7-4631-951e-e91301055867
+		summarizeBy: none
+		sourceColumn: store_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		lineageTag: 7b173bff-5a76-4dde-ad03-7e3bef177096
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column brand
+		dataType: string
+		lineageTag: af8403b0-49d0-4a96-a95c-cae9de7860fb
+		summarizeBy: none
+		sourceColumn: brand
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_age
+		dataType: int64
+		formatString: 0
+		lineageTag: 7a488ad0-584e-4749-9b4a-10f18a5705de
+		summarizeBy: sum
+		sourceColumn: customer_age
+
+		annotation SummarizationSetBy = Automatic
+
+	partition sales = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\Alieu\Documents\chocolate_sales.xlsx"), null, true),
+				    sales_Sheet = Source{[Item="sales",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(sales_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"order_id", type text}, {"order_date", type date}, {"product_id", type text}, {"store_id", type text}, {"customer_id", type text}, {"quantity", Int64.Type}, {"unit_price", type number}, {"total_price", type number}, {"discount", type number}, {"revenue", type number}, {"production_cost", type number}, {"profit", type number}, {"gender", type text}, {"loyalty_membership", Int64.Type}, {"country", type text}, {"store_type", type text}, {"product_name", type any}, {"brand", type any}, {"customer_age", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
