@@ -62,7 +62,7 @@ When wanting to go through this project, this is a snapshot of how the outcome o
 
 -	**Germany** has the lowest profit among the six countries analyzed.
 
-![country_trend](https://github.com/abdulaikabba19/chocolate_sales_PBI/blob/main/image/profit&revenue_by_country.png?raw=true)
+![country_trend](https://github.com/abdulaikabba19/chocolate_sales_PBI/blob/main/image/profit&revenue.png?raw=true)
 
 *This chart illustrates how revenue and profit is made in the different countries*
 
@@ -74,16 +74,72 @@ When wanting to go through this project, this is a snapshot of how the outcome o
 
 -	**Retail** stores show the lowest volume, suggesting room for improvement.
 
-![store_sales]()
+![store_sales](https://github.com/abdulaikabba19/chocolate_sales_PBI/blob/main/image/quantity_sold.png?raw=true)
 
-👥 4. Customer Demographics
+*This chart shows how the quantity sold by different stores vary*
 
-•	Age range of customers: 18–70 years
-•	Gender distribution: Male & Female
-•	Loyalty membership: Members vs Non members included for segmentation.
+**👥 4. Customer Demographics**
 
-📅 5. Profit Trend (2023–2024)
-•	Profit fluctuates between $380K–$440K monthly.
-•	Seasonal peaks suggest strong holiday driven demand.
+-	Age range of customers: 18–69 years
+
+-	Gender distribution: Male & Female
+
+-	Loyalty membership: Members vs Non members included for segmentation.
+
+By using the slicers of any of these section, you will be able to see how they vary based on these conditions as shown in the dashboard above. 
+
+**📅 5. Profit Trend (2023–2024)**
+
+-	Profit fluctuates between $380K–$440K monthly.
+
+-	Seasonal peaks suggest strong holiday driven demand.
+
+![profit_trend](https://github.com/abdulaikabba19/chocolate_sales_PBI/blob/main/image/profit_yearly_trend.png?raw=true)
+
+*This line chart shows how the profits trend all through the two years of sales*
+
+## 🧹 Data Cleaning & Preparation
+The dataset was cleaned and transformed using Power Query to:
+-	Removed duplicates and null values
+
+-	Standardized date formats
+
+-	Created calculated columns for: 
+	- Profit
+	- Discounted Amount
+	
+
+-	Normalized product categories
+-	Ensured consistent currency formatting
+
+
+## 🛠️ Tools & Technologies 
+-	Power BI Desktop
+-	Power Query
+-	DAX (Data Analysis Expressions)
+-	Microsoft Excel
+-	Data Modeling
+-	Visualization & Storytelling
+
+## 🚀 Skills Demonstrated
+-	Data Cleaning & Transformation
+-	Advanced DAX Calculations
+-	Interactive Dashboard Design
+-	Business Insight Generation
+-	Data Modeling & Relationships
+-	Analytical Storytelling
+
+
+## 📥 How to Use This Project
+1.	Download the .pbix file from this repository.
+2.	Open it in Power BI Desktop.
+3.	Explore the interactive visuals, filters, and drill downs.
+4.	Modify or extend the dashboard as needed.
+
+## 🙌 Acknowledgements
+This project was created to demonstrate my strong analytical and visualization skills in Power BI for real world business scenarios.
+
+
+
 
 
